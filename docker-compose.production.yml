@@ -10,24 +10,24 @@ volumes:
 services:
   db:
     image: postgres:13.10
-    env_file: .env.
+    env_file: .env.example
     volumes:
       - pg_data_production:/var/lib/postgresql/data
   backend:
     image: tatprince/kittygram_backend
-    env_file: .env
+    env_file: .env.example
     volumes:
       - static_volume:/backend_static
       - media_volume:/meida
   frontend:
     image: tatprince/kittygram_frontend  # Качаем с Docker Hub
-    env_file: .env
+    env_file: .env.example
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static_volume:/frontend_static
   gateway:
     image: tatprince/kittygram_gateway  # Качаем с Docker Hub
-    env_file: .env
+    env_file: .env.example
     volumes:
       - static_volume:/staticfiles
       - media_volume:/media
