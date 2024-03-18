@@ -18,7 +18,7 @@ services:
     env_file: .env.example
     volumes:
       - static_volume:/backend_static
-      - media_volume:/meida
+      - media_volume:/media
   frontend:
     image: tatprince/kittygram_frontend  # Качаем с Docker Hub
     env_file: .env.example
