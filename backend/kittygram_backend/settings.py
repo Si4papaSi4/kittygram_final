@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testproject.zapto.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testproject.zapto.org', '84.201.142.151']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,7 +63,7 @@ DATABASES = {
         'USER': os.getenv('POSTGRES_USER', 'django'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
         'HOST': os.getenv('DB_HOST', ''),
-        'PORT': os.getenv('DB_PORT', 5432)
+        'PORT': os.getenv('PGPORT', 5432)
     }
 }
 
