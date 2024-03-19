@@ -4,11 +4,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testproject.zapto.org', '84.201.142.151']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -58,7 +58,7 @@ DATABASES = {
     'default': {
         # Меняем настройку Django: теперь для работы будет использоваться
         # бэкенд postgresql
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': os.getenv('DB_ENGINE','django.db.backends.sqlite3'),
         'NAME': os.getenv('POSTGRES_DB', 'django'),
         'USER': os.getenv('POSTGRES_USER', 'django'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
@@ -98,8 +98,6 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# Указываем корневую директорию для сборки статических файлов;
-# в контейнере это будет /app/collected_static
 STATIC_ROOT = BASE_DIR / 'collected_static'
 
 MEDIA_URL = '/media/'
